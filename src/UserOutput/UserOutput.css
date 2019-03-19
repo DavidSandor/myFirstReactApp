@@ -1,0 +1,8 @@
+.user-output {
+    background-color: black;
+    color: greenyellow;
+    margin:  20px auto;
+    padding: 10px;
+    border-radius: 10px;
+    width: 50%;
+}

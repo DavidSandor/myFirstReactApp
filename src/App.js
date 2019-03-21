@@ -10,6 +10,8 @@ import UserOutput from './UserOutput/UserOutput';
 import './UserOutput/UserOutput.css';
 import './UserInput/UserInput.css';
 
+import Job from './Job/Job';
+import './Job/Job.css';
 
 class App extends Component {
 state = {
@@ -19,7 +21,12 @@ state = {
   ],
   hobby: "skiing",
   username1: "Sancydave",
-  username2: "SomeoneElse"
+  username2: "SomeoneElse",
+  jobs: [
+    {position: "Engineer", salary: 2500, fullTime: true},
+    {position: "Programmer", salary: 3400, fullTime: false},
+    {position: "Medic", salary: 1600, fullTime: true},
+  ]
 }
 
 nameChangeHandler = () => {
@@ -38,10 +45,16 @@ userOutputNameChangeHandler = (event) => {
   })
 }
 
-  render() {
+render() {
 
     const style = {
       margin: '15px'
+    };
+
+    const jobList = () => {
+      return this.state.jobs.map(job => {
+        return <Job position={job.position} salary={job.salary} fullTime={job.fullTime}/>
+      })
     };
 
     return (
@@ -56,6 +69,9 @@ userOutputNameChangeHandler = (event) => {
           <UserInput inputChange={this.userOutputNameChangeHandler.bind(this)} inputValue={this.state.username1}></UserInput>
           <UserOutput title={this.state.username1} content="Content of the first output"></UserOutput>
           <UserOutput title={this.state.username2} content="Content of the second output"></UserOutput>
+        </section>
+        <section>
+          {jobList()}
         </section>
       </div>
     );
